@@ -1,0 +1,183 @@
+<p><a href="/children">Return to the list of children</a></p>
+
+<h1>Update <%= @child.name %>'s log</h1>
+<br>
+
+<form class="create" action="/children/<%= @child.id %>/logs/edit" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <p>
+    First Nap:
+    <select class="" name="first_nap[time]">
+      <option></option>
+      <!-- drop_down time for edit page -->
+      <% (7..18).each do |hour| %>
+        <% (0..3).each do |minute| %>
+          <% time_hour = hour > 12 ? hour - 12 : hour %>
+          <% time_minute= minute == 0 ? "00" : minute * 15 %>
+          <% am_pm = hour < 12 ? "AM" : "PM" %>
+          <% selected = "#{time_hour}:#{time_minute} #{am_pm}" == @log.first_nap_time ? "selected" : "" %>
+          <option <%= selected %> >
+            <%= "#{time_hour}:#{time_minute} #{am_pm}" %>
+          </option>
+        <% end %>
+      <% end %>
+      <!-- end drop_down time for edit page -->
+    </select>
+
+    Duration:
+    <select name="first_nap[duration]">
+      <option></option>
+      <%  24.times do |increment| %>
+        <% length = increment * 5 %>
+        <% selected = length.to_s == @log.first_nap_duration ? "selected" : "" %>
+        <option value="<%= length %>" <%= selected %> ><%= length %></option>
+      <% end %>
+    </select><span> minutes</span>
+
+  </p>
+
+  <p>
+    Second Nap:
+    <select class="" name="second_nap[time]">
+      <option></option>
+      <!-- drop_down time for edit page -->
+      <% (7..18).each do |hour| %>
+        <% (0..3).each do |minute| %>
+          <% time_hour = hour > 12 ? hour - 12 : hour %>
+          <% time_minute= minute == 0 ? "00" : minute * 15 %>
+          <% am_pm = hour < 12 ? "AM" : "PM" %>
+          <% selected = "#{time_hour}:#{time_minute} #{am_pm}" == @log.second_nap_time ? "selected" : "" %>
+          <option <%= selected %> >
+            <%= "#{time_hour}:#{time_minute} #{am_pm}" %>
+          </option>
+        <% end %>
+      <% end %>
+      <!-- end drop_down time for edit page -->
+    </select>
+
+    Duration:
+    <select name="second_nap[duration]">
+      <option value=""></option>
+      <%  24.times do |increment| %>
+        <% length = increment * 5 %>
+        <% selected = length.to_s == @log.second_nap_duration ? "selected" : "" %>
+        <option value="<%= length %>" <%= selected %> ><%= length %></option>
+    <% end %>
+    </select><span> minutes</span>
+
+  </p>
+
+  <p>
+    Number of Wet Diapers:
+    <select class="" name="diaper[wet]">
+      <% (0..8).each do |diaper| %>
+        <option value="<%= diaper %>" <%= diaper == @log.wet_diapers ? "selected" : "" %> ><%= diaper %></option>
+      <% end %>
+    </select>
+  </p>
+
+  <p>
+    Number of Soiled Diapers:
+    <select class="" name="diaper[solied]">
+      <% (0..8).each do |diaper| %>
+        <option value="<%= diaper %>" <%= diaper == @log.solied_diapers ? "selected" : "" %> ><%= diaper %></option>
+      <% end %>
+    </select>
+  </p>
+
+  <p>
+    First Feeding:
+    <select class="" name="feeding[first]">
+      <option value=""></option>
+      <!-- drop_down time for edit page -->
+      <% (7..18).each do |hour| %>
+        <% (0..3).each do |minute| %>
+          <% time_hour = hour > 12 ? hour - 12 : hour %>
+          <% time_minute= minute == 0 ? "00" : minute * 15 %>
+          <% am_pm = hour < 12 ? "AM" : "PM" %>
+          <% selected = "#{time_hour}:#{time_minute} #{am_pm}" == @log.first_feeding ? "selected" : "" %>
+          <option <%= selected %> >
+            <%= "#{time_hour}:#{time_minute} #{am_pm}" %>
+          </option>
+        <% end %>
+      <% end %>
+      <!-- end drop_down time for edit page -->
+    </select>
+  </p>
+
+  <p>
+    Second Feeding:
+    <select class="" name="feeding[second]">
+      <option value=""></option>
+      <!-- drop_down time for edit page -->
+      <% (7..18).each do |hour| %>
+        <% (0..3).each do |minute| %>
+          <% time_hour = hour > 12 ? hour - 12 : hour %>
+          <% time_minute= minute == 0 ? "00" : minute * 15 %>
+          <% am_pm = hour < 12 ? "AM" : "PM" %>
+          <% selected = "#{time_hour}:#{time_minute} #{am_pm}" == @log.second_feeding ? "selected" : "" %>
+          <option <%= selected %> >
+            <%= "#{time_hour}:#{time_minute} #{am_pm}" %>
+          </option>
+        <% end %>
+      <% end %>
+      <!-- end drop_down time for edit page -->
+    </select>
+  </p>
+
+  <p>
+    Third Feeding:
+    <select class="" name="feeding[third]">
+      <option value=""></option>
+      <!-- drop_down time for edit page -->
+      <% (7..18).each do |hour| %>
+        <% (0..3).each do |minute| %>
+          <% time_hour = hour > 12 ? hour - 12 : hour %>
+          <% time_minute= minute == 0 ? "00" : minute * 15 %>
+          <% am_pm = hour < 12 ? "AM" : "PM" %>
+          <% selected = "#{time_hour}:#{time_minute} #{am_pm}" == @log.third_feeding ? "selected" : "" %>
+          <option <%= selected %> >
+            <%= "#{time_hour}:#{time_minute} #{am_pm}" %>
+          </option>
+        <% end %>
+      <% end %>
+      <!-- end drop_down time for edit page -->
+    </select>
+  </p>
+
+    <h3>Today's Activities:</h3>
+    <ol>
+      <input type="hidden" name="activity[hidden]" value="">
+      <!-- undefined method `[]' for nil:NilClass --if no items are checked w/o hidden input ^^ -->
+
+      <li>
+        <input type="checkbox" name="activity[arts_and_crafts]" value="1" <%= @log.art_and_crafts ? "checked" : "" %>> Arts and Crafts</input>
+      </li>
+      <li>
+        <input type="checkbox" name="activity[gym_time]" value="1" <%= @log.gym_time ? "checked" : "" %> > Gym Time</input>
+      </li>
+      <li>
+        <input type="checkbox" name="activity[independent_play_time]" value="1" <%= @log.independent_play_time ? "checked" : "" %>> Independent Play Time</input>
+      </li>
+      <li>
+        <input type="checkbox" name="activity[music_time]" value="1" <%= @log.music_time ? "checked" : "" %>> Music Time</input>
+      </li>
+      <li>
+        <input type="checkbox" name="activity[sensory_play_time]" value="1" <%= @log.sensory_play_time ? "checked" : "" %>> Sensory Play Time</input>
+      </li>
+      <li>
+        <input type="checkbox" name="activity[story_time]" value="1" <%= @log.story_time ? "checked" : "" %>> Story Time</input>
+      </li>
+      <li>
+        <input type="checkbox" name="activity[tummy_time]" value="1" <%= @log.tummy_time ? "checked" : "" %>> Tummy Time</input>
+      </li>
+    </ol>
+    <br>
+    <p>
+      Additional Notes:<br>
+      <textarea name="notes" rows="4" cols="50"><%= @log.notes %></textarea>
+    </p>
+  <p>
+    <input type="submit" name="submit" value=" Submit Your Edits ">
+  </p>
+</form>

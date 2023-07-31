@@ -1,0 +1,38 @@
+<p><a href="/children">Return to the list of children</a></p>
+
+<h1>Hello</h1>
+<h2>Here is <%= @child.name %>'s info</h2>
+
+<li><b>Child's name:</b> <%= @child.name %></li>
+<li><b>Child's birthdate:</b> <%= @child.birthdate %></li>
+<li><b>Child's gender:</b> <%= @child.gender == "F" ? "Girl" : "Boy" %></li>
+<br>
+
+<!-- Set a if statement to check if log exists then href= /edit  -->
+<% if !@child.logs.empty? %>
+    <p class="buttons"><a class="button" href="/children/<%= @child.id %>/logs/edit">Edit the Daily Log</a></p>
+  <% else %>
+    <p><a href="/children/<%= @child.id %>/logs/create">Enter information into the Daily Log</a></p>
+<% end %>
+<!-- Is there a way to meta print?  -->
+<p>
+  <% if !@child.logs.empty? %>
+    <div class="log_attributes">
+
+      <% @log.attributes.each do |k,v| %>
+        <% #binding.pry %>
+        <% if v != nil && v != 0 && v != "" && k != "id" && k != "child_id" %>
+          <li class="log-list"><b><%= k.gsub("solied_diapers","soiled diapers").gsub("_", " ").capitalize %>:</b> <%= v == true ? "[x]" : v  %></li>
+        <% end %>
+      <% end %>
+      </div>
+      <br>
+      <div class="buttons">
+        <a class="delete-button" href="/children/<%= @child.id %>/logs/delete">Delete This Record?</a>
+      </div>
+    <% else %>
+      <div class="log_attributes">
+        There is not a log for this child
+      </div>
+    <% end %>
+</p>
