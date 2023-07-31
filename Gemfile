@@ -7,11 +7,11 @@ gem 'rake'
 gem 'require_all'
 gem 'pg'
 gem 'thin'
-gem 'rack'
 gem 'pry'
 gem 'bcrypt'
 gem 'sho'
 gem 'tux'
+gem 'rack-session'
 
 group :test do
   gem 'rspec'

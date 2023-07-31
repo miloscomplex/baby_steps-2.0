@@ -1,18 +1,20 @@
+# require 'sinatra'
 ENV['SINATRA_ENV'] ||= "development"
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
-# ActiveRecord::Base.establish_connection(
-#   :adapter => "postgresql",
-#   :database => "db/#{ENV['SINATRA_ENV']}"
-# )
-# configure :development do
-#   ActiveRecord::Base.establish_connection(
-#   :adapter => "sqlite3",
-#   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
-# )
-# end
+ActiveRecord::Base.establish_connection(
+  :adapter => "postgresql",
+  :database => "db/#{ENV['SINATRA_ENV']}"
+)
+
+configure :development do
+  ActiveRecord::Base.establish_connection(
+    :adapter => "postgresql",
+  :database => "db/#{ENV['SINATRA_ENV']}"
+)
+end
 
 # configure :production do
 #   db = URI.parse(ENV['HEROKU_POSTGRESQL_COBALT_URL'] || 'postgres://localhost/mydb')
@@ -27,7 +29,7 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
 #   )
 # end
 
-require 'active_record'
+# require 'active_record'
 
 require './app/controllers/application_controller'
 
