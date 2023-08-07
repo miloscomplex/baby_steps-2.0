@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 function Form(props) {
 
     const submitURL = props.submitURL
-    //console.log(submitURL)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
@@ -26,7 +25,7 @@ function Form(props) {
     return (
         <form onSubmit={handleSubmit}>
             <div className="mb-3">
-                <label for="exampleInputEmail1" className="form-label">Email address</label>
+                <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                 <input 
                     type="email" 
                     className="form-control" 
@@ -37,7 +36,7 @@ function Form(props) {
                 />
             </div>
             <div className="mb-3">
-                <label for="exampleInputPassword1" className="form-label">Password</label>
+                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <input 
                     type="password" 
                     className="form-control" 
