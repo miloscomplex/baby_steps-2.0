@@ -1,12 +1,12 @@
 import Form from "./Form";
 
-function Signin() {
+function Signup() {
     return (
       <div className="container">
-        <h1>Please sign-in</h1>
+        <h1>Please sign-up</h1>
         <Form />
       </div>
     );
   }
   
-  export default Signin;
+  export default Signup;
