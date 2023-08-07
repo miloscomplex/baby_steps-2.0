@@ -5,7 +5,7 @@ function DailyLog() {
         <div className="card p-3 mb-2">
             <div className="card-body">
                 <img src="./images/baby_face.jpg" className="student-img mb-3" />
-                <h5>Millie Aire</h5>
+                <h5>Teddy Smith</h5>
                 <h6>Arrival</h6>
                 <form>
                     <label for="time">Example time</label>
@@ -13,22 +13,22 @@ function DailyLog() {
                     <h6 className="mt-3">Meals</h6>
                     <div>
                         <label for="breakfast">finished breakfast</label>
-                        <input type="checkbox" className="m-3"/>
+                        <input type="checkbox" id="breakfast" name="breakfastCheckBox" value="true" className="m-3"/>
                     </div>
                     <div>
                         <label for="snack">finished snack</label>
-                        <input type="checkbox" className="m-3"/>
+                        <input type="checkbox" id="morningSnack" name="mSnackCheckBox" value="true" className="m-3"/>
                     </div>
                     <div>
                         <label for="lunch">finished lunch</label>
-                        <input type="checkbox" className="m-3"/>
+                        <input type="checkbox" id="lunch" name="lunchCheckBox" value="true" className="m-3"/>
                     </div>
                     <div>
                         <label for="afternoon-snack">finished afternoon snack</label>
-                        <input type="checkbox" className="m-3"/>
+                        <input type="checkbox" id="afternoonSnack" name="afternoonSnackCheckBox" value="checked" className="m-3"/>
                     </div>
-                
-                    <a href="#" className="btn mt-3 btn-secondary">Commit Changes</a>
+
+                    <button href="#" className="btn mt-3 btn-secondary">Commit Changes</button>
                 </form>
             </div>
         </div>
