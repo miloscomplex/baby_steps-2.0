@@ -8,7 +8,6 @@ import NewStudent from './components/NewStudent';
 function App() {
   return (
     <div className="App">
-      <Header />
       <Signin />
       <Home />
       <DailyLog />
