@@ -40,7 +40,7 @@ class StudentsController < ApplicationController
     end
 
     def student_params
-        params.permit(:email)
+        params.permit(:firstname, :lastname, :birthdate, :arrival, :user_id)
     end
 
 end
