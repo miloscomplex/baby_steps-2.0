@@ -28,7 +28,7 @@ function NewStudent() {
 
     return (
       <div className="container">
-        <h1 className="my-4">Please complete the forms below to enter the new child</h1>
+        <h1 className="my-4">Please complete the forms below to enter the new child.</h1>
         <form onSubmit={handleSubmit}>
             <div className="row mb-3">
                 <label htmlFor="name" className="form-label h5">Child's name</label>
@@ -63,14 +63,14 @@ function NewStudent() {
                 </div>
             </div>
             <div className="mb-3">
-                <label htmlFor="gender-b" className="form-label">Boy</label>
+                <label htmlFor="gender-b" className="form-label h5">Boy</label>
                 <input type="radio"  
                     name="genderRadios" 
                     value="boy" 
                     className="m-2" 
                     id="gender-b" 
                 />
-                <label htmlFor="gender-f" className="form-label">Girl</label>
+                <label htmlFor="gender-f" className="form-label h5">Girl</label>
                 <input type="radio" 
                     name="genderRadios" 
                     value="girl" 

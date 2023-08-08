@@ -18,7 +18,7 @@ function DailyLog() {
                             <div key={`inline-${type}`} className="mb-3">
                             <Form.Check
                                 inline
-                                label="ate none"
+                                label="none"
                                 name="breakfast"
                                 type={type}
                                 id={`inline-${type}-1`}
@@ -48,7 +48,7 @@ function DailyLog() {
                             <div key={`inline-${type}`} className="mb-3">
                             <Form.Check
                                 inline
-                                label="ate none"
+                                label="none"
                                 name="morningSnack"
                                 type={type}
                                 id={`inline-${type}-4`}
@@ -78,7 +78,7 @@ function DailyLog() {
                             <div key={`inline-${type}`} className="mb-3">
                             <Form.Check
                                 inline
-                                label="ate none"
+                                label="none"
                                 name="lunch"
                                 type={type}
                                 id={`inline-${type}-7`}
@@ -108,7 +108,7 @@ function DailyLog() {
                             <div key={`inline-${type}`} className="mb-3">
                             <Form.Check
                                 inline
-                                label="ate none"
+                                label="none"
                                 name="afternoonSnack"
                                 type={type}
                                 id={`inline-${type}-10`}
@@ -131,6 +131,8 @@ function DailyLog() {
                         ))}
                         </Form>
                     </div>
+                    <label htmlFor="time">Depature</label>
+                    <input type="time" className="form-control" id="timeDeparture"></input>
 
                     <button href="#" className="btn mt-4 btn-secondary">Commit Changes</button>
                 </fieldset>
