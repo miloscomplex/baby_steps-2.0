@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         render json: users
     end
 
-    def
+    def show
         user = User.find(params[:id])
         render json: user
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
             user.update(user_params)
             render json: user, status: 200
         else
-            render json: { error: "unable to update user" }, status 400
+            render json: { error: "unable to update user" }, status: 400
         end
     end
 
@@ -33,14 +33,14 @@ class UsersController < ApplicationController
         user = User.find(params[:id])
         if user
             user.destroy
-            render json: user, status 200
+            render json: user, status: 200
         else
-            render json: { error: "Unable to delete user" }, status 400
+            render json: { error: "Unable to delete user" }, status: 400
         end
     end
 
-    def author_params
+    def user_params
         params.permit(:email)
     end
-
+    
 end

@@ -1,10 +1,11 @@
 class StudentsController < ApplicationController
+
     def index
         students = Student.all
         render json: students
     end
 
-    def
+    def show
         student = Student.find(params[:id])
         render json: student
     end
@@ -24,7 +25,7 @@ class StudentsController < ApplicationController
             student.update(student_params)
             render json: student, status: 200
         else
-            render json: { error: "unable to update student" }, status 400
+            render json: { error: "unable to update student" }, status: 400
         end
     end
 
@@ -32,9 +33,9 @@ class StudentsController < ApplicationController
         student = Student.find(params[:id])
         if student
             student.destroy
-            render json: student, status 200
+            render json: student, status: 200
         else
-            render json: { error: "Unable to delete student" }, status 400
+            render json: { error: "Unable to delete student" }, status: 400
         end
     end
 
