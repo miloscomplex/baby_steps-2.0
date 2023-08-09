@@ -21,6 +21,11 @@ function Home() {
             .catch(error => console.error('Error fetching data:', error));
   }, []); // Empty dependency array means this effect runs only once on mount
 
+    const trimmedTime = (str) => {
+        let trimmedStr = str.split('T')
+        console.log('trimmedStr:', trimmedStr);
+    }
+
     return (
       <div className="container p-4">
         <h1>Welcome back, Michael</h1>
@@ -31,7 +36,7 @@ function Home() {
                     <img src="./images/baby_face.jpg" className="student-img mb-3" />
                     
                     <h4>{student.firstname} {student.lastname}</h4>
-                    <p className="card-text">arrival time {student.arrival}</p>
+                    <p className="card-text">arrival time {student.arrival.split('T')[1].split(':00')[0]}</p>
                     <a href="#" className="btn btn-secondary">Daily Log</a>
                     <p className="mt-3">
                         <a href="students/#{student.id}">Update profile</a>
