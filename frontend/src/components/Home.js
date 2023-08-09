@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 function Home() {
 
     const handleClick = (event) => {
@@ -5,43 +7,40 @@ function Home() {
         console.log('Add a student was clicked');
     };
 
+    const [data, setData] = useState([]);
+
+    // Effect to fetch data when the component mounts
+    useEffect(() => {
+        // Define the URL for the API endpoint you want to fetch from
+        const apiUrl = 'http://127.0.0.1:3000/students';
+
+        // Use the fetch function to make the GET request
+        fetch(apiUrl)
+            .then(response => response.json()) // Parse the response as JSON
+            .then(data => setData(data)) // Update the state with fetched data
+            .catch(error => console.error('Error fetching data:', error));
+  }, []); // Empty dependency array means this effect runs only once on mount
+
     return (
       <div className="container p-4">
         <h1>Welcome back, Michael</h1>
         <h4 className="mb-4">Current enrolled students</h4>
-        <div className="card p-3 mb-2">
-            <div className="card-body">
-                <img src="./images/baby_face.jpg" className="student-img mb-3" />
-                <h4>Firstname Lastname</h4>
-                <p className="card-text">Age 3</p>
-                <a href="#" className="btn btn-secondary">Daily Log</a>
-                <p className="mt-3">
-                    <a href="">Update profile</a>
-                </p>
+        {data.map(student => (
+            <div key={student.id} className="card p-3 mb-2">
+                <div className="card-body">
+                    <img src="./images/baby_face.jpg" className="student-img mb-3" />
+                    
+                    <h4>{student.firstname} {student.lastname}</h4>
+                    <p className="card-text">arrival time {student.arrival}</p>
+                    <a href="#" className="btn btn-secondary">Daily Log</a>
+                    <p className="mt-3">
+                        <a href="students/#{student.id}">Update profile</a>
+                    </p>
+                </div>
             </div>
-        </div>
-        <div className="card p-3 mb-2">
-            <div className="card-body">
-                <img src="./images/baby_face.jpg" className="student-img mb-3" />
-                <h4>Firstname Lastname</h4>
-                <p className="card-text">Age 3</p>
-                <a href="#" className="btn btn-secondary">Daily Log</a>
-                <p className="mt-3">
-                    <a href="">Update profile</a>
-                </p>
-            </div>
-        </div>
-        <div className="card p-3 mb-2">
-            <div className="card-body">
-                <img src="./images/baby_face.jpg" className="student-img mb-3" />
-                <h4>Firstname Lastname</h4>
-                <p className="card-text">Age 3</p>
-                <a href="#" className="btn btn-secondary">Daily Log</a>
-                <p className="mt-3">
-                    <a href="">Update profile</a>
-                </p>
-            </div>
-        </div>
+
+        ))}
+        
         <button 
             type="button" onClick={handleClick} className="btn btn-primary my-4">Add a student</button>
       </div>
