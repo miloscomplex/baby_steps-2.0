@@ -11,7 +11,8 @@ function Signin() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     if (username === 'mike@gmail.com' && password === 'mike') {
       localStorage.setItem('token', 'your-token-here');
       navigate('/home');
@@ -23,7 +24,7 @@ function Signin() {
   return (
     <div className="container">
       <h1>Please sign-in</h1>
-      { error ? <h5>invalid credentials</h5>: ""}
+      { error ? <h5 className="text-danger">invalid credentials</h5>: ""}
       <form>
       <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
@@ -47,7 +48,7 @@ function Signin() {
               required
           />
       </div>
-      <button type="submit" onClick={handleLogin} className="btn btn-primary">Submit</button>
+      <button type="submit" onClick={e => handleLogin(e)} className="btn btn-primary">Submit</button>
   </form>
     </div>
   );

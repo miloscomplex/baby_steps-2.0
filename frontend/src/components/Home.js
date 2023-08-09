@@ -12,15 +12,13 @@ function Home() {
 
     // Effect to fetch data when the component mounts
     useEffect(() => {
-        // Define the URL for the API endpoint you want to fetch from
         const apiUrl = 'http://127.0.0.1:3000/students';
 
-        // Use the fetch function to make the GET request
         fetch(apiUrl)
-            .then(response => response.json()) // Parse the response as JSON
+            .then(response => response.json())
             .then(data => setData(data)) // Update the state with fetched data
             .catch(error => console.error('Error fetching data:', error));
-  }, []); // Empty dependency array means this effect runs only once on mount
+    }, []); // Empty dependency array means this effect runs only once on mount
 
     const trimmedTime = (str) => {
         let trimmedStr = str.split('T')
@@ -38,9 +36,9 @@ function Home() {
                     
                     <h4>{student.firstname} {student.lastname}</h4>
                     <p className="card-text">Arrival time {student.arrival.split('T')[1].split(':00')[0]}</p>
-                    <a href="#" className="btn btn-secondary">Daily Log</a>
+                    <a href={`students/${student.id}/dailylog`} className="btn btn-secondary">Daily Log</a>
                     <p className="mt-3">
-                        <a href="students/#{student.id}">Update profile</a>
+                        <a href={`students/${student.id}/dailylog`}>Update profile</a>
                     </p>
                 </div>
             </div>
