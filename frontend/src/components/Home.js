@@ -33,10 +33,10 @@ function Home() {
         {data.map(student => (
             <div key={student.id} className="card p-3 mb-2">
                 <div className="card-body">
-                    <img src="./images/baby_face.jpg" className="student-img mb-3" />
+                    <img src={student.img_url} className="student-img mb-3" />
                     
                     <h4>{student.firstname} {student.lastname}</h4>
-                    <p className="card-text">arrival time {student.arrival.split('T')[1].split(':00')[0]}</p>
+                    <p className="card-text">Arrival time {student.arrival.split('T')[1].split(':00')[0]}</p>
                     <a href="#" className="btn btn-secondary">Daily Log</a>
                     <p className="mt-3">
                         <a href="students/#{student.id}">Update profile</a>

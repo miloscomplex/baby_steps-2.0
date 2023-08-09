@@ -5,7 +5,7 @@ function DailyLog() {
       <div className="container p-4">
         <div className="card p-3 mb-2">
             <div className="card-body">
-                <img src="./images/baby_face.jpg" className="student-img mb-3" />
+                <img src="./images/baby_face-1.jpg" className="student-img mb-3" />
                 <h1>Teddy Smith</h1>
                 <fieldset>
                     <label htmlFor="time">Arrival</label>
