@@ -8,21 +8,22 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Signin from './components/Signin';
+import Signin from './components/Login';
 import Header from './components/Header';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-]);
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//   },
+// ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Header />
-    <RouterProvider router={router} />
+    <App />
+    {/* <RouterProvider router={router} /> */}
+    
   </React.StrictMode>
 );
 
