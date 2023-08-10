@@ -10,7 +10,6 @@ function DailyLog() {
     const [afternoonSnack, setAfternoonSnack] = useState('');
 
     const handleClick = (e) => {
-        console.log(e)
         console.log("breakfast:", breakfast);
         console.log("morningSnack:", morningSnack);
         console.log("lunch:", lunch);

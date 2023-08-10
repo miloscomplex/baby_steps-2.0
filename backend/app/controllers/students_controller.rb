@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
     def create
         student = Student.new(student_params)
         if student.save
-            render json: author
+            render json: student
         else
             render json: { error: "Unable to create student" }, status: 400
         end
@@ -40,7 +40,7 @@ class StudentsController < ApplicationController
     end
 
     def student_params
-        params.permit(:firstname, :lastname, :birthdate, :arrival, :user_id)
+        params.require(:student).permit(:firstname, :lastname, :birthdate, :arrival, :user_id, :gender)
     end
 
 end

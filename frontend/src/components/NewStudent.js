@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { API, HEADERS } from '../constants/index'
 
 function NewStudent() {
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [birthday, setBirthday] = useState('');
+    const [firstname, setFirstName] = useState('');
+    const [lastname, setLastName] = useState('');
+    const [birthdate, setBirthdate] = useState('');
     const [gender, setGender] = useState('');
+    const [user_id, setUserId] = useState('1');
 
     const handleFirstName = (event) => {
         setFirstName(event.target.value);
@@ -16,16 +18,28 @@ function NewStudent() {
     };
 
     const handleBirthday = (event) => {
-        setBirthday(event.target.value)
+        setBirthdate(event.target.value)
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         // Here you can add your login logic, such as calling an API to validate the credentials
-        console.log('firstName:', firstName);
-        console.log('lastName:', lastName);
-        console.log('birthday:', birthday);
+        console.log('firstName:', firstname);
+        console.log('lastName:', lastname);
+        console.log('birthdate:', birthdate);
         console.log('gender:', gender);
+        console.log(JSON.stringify({firstname, lastname, birthdate, gender, user_id}));
+
+        fetch(`${API}students`, {
+            method: 'POST',
+            headers: HEADERS,
+            body: JSON.stringify({firstname, lastname, user_id})
+        });
+        setFirstName('')
+        setLastName('')
+        setBirthdate('')
+        setGender('')
+
       };  
 
     return (
