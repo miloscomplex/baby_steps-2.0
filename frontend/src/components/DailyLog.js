@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 function DailyLog() {
 
+    const [arrival, setArrival] = useState('');
     const [breakfast, setBreakfast] = useState('');
     const [morningSnack, setMorningSnack] = useState('');
     const [lunch, setLunch] = useState('');
@@ -35,25 +36,28 @@ function DailyLog() {
                                 inline
                                 label="none"
                                 name="breakfast"
+                                value="none"
                                 type={type}
                                 id={`inline-${type}-1`}
-                                onClick={e => setBreakfast("none")}
+                                onClick={e => setBreakfast(e.target.value)}
                             />
                             <Form.Check
                                 inline
                                 label="ate some"
+                                value="ate some"
                                 name="breakfast"
                                 type={type}
                                 id={`inline-${type}-2`}
-                                onClick={e => setBreakfast("ate some")}
+                                onClick={e => setBreakfast(e.target.value)}
                             />
                             <Form.Check
                                 inline
                                 label="finished"
+                                value="finished"
                                 name="breakfast"
                                 type={type}
                                 id={`inline-${type}-3`}
-                                onClick={e => setBreakfast("finished")}
+                                onClick={e => setBreakfast(e.target.value)}
                             />
                             </div>
                         ))}
@@ -67,26 +71,29 @@ function DailyLog() {
                             <Form.Check
                                 inline
                                 label="none"
+                                value="none"
                                 name="morningSnack"
                                 type={type}
                                 id={`inline-${type}-4`}
-                                onClick={e => setMorningSnack("none")}
+                                onClick={e => setMorningSnack(e.target.value)}
                             />
                             <Form.Check
                                 inline
                                 label="ate some"
+                                value="ate some"
                                 name="morningSnack"
                                 type={type}
                                 id={`inline-${type}-5`}
-                                onClick={e => setMorningSnack("ate some")}
+                                onClick={e => setMorningSnack(e.target.value)}
                             />
                             <Form.Check
                                 inline
                                 label="finished"
+                                value="finished"
                                 name="morningSnack"
                                 type={type}
                                 id={`inline-${type}-6`}
-                                onClick={e => setMorningSnack("finished")}
+                                onClick={e => setMorningSnack(e.target.value)}
                             />
                             </div>
                         ))}
@@ -100,26 +107,29 @@ function DailyLog() {
                             <Form.Check
                                 inline
                                 label="none"
+                                value="none"
                                 name="lunch"
                                 type={type}
                                 id={`inline-${type}-7`}
-                                onClick={e => setLunch("none")}
+                                onClick={e => setLunch(e.target.value)}
                             />
                             <Form.Check
                                 inline
                                 label="ate some"
+                                value="ate some"
                                 name="lunch"
                                 type={type}
                                 id={`inline-${type}-8`}
-                                onClick={e => setLunch("ate some")}
+                                onClick={e => setLunch(e.target.value)}
                             />
                             <Form.Check
                                 inline
                                 label="finished"
+                                value="finished"
                                 name="lunch"
                                 type={type}
                                 id={`inline-${type}-9`}
-                                onClick={e => setLunch("finished")}
+                                onClick={e => setLunch(e.target.value)}
                             />
                             </div>
                         ))}
@@ -133,26 +143,29 @@ function DailyLog() {
                             <Form.Check
                                 inline
                                 label="none"
+                                value="none"
                                 name="afternoonSnack"
                                 type={type}
                                 id={`inline-${type}-10`}
-                                onClick={e => setAfternoonSnack("none")}
+                                onClick={e => setAfternoonSnack(e.target.value)}
                             />
                             <Form.Check
                                 inline
                                 label="ate some"
+                                value="ate some"
                                 name="afternoonSnack"
                                 type={type}
                                 id={`inline-${type}-11`}
-                                onClick={e => setAfternoonSnack("ate some")}
+                                onClick={e => setAfternoonSnack(e.target.value)}
                             />
                             <Form.Check
                                 inline
                                 label="finished"
+                                value="finished"
                                 name="afternoonSnack"
                                 type={type}
                                 id={`inline-${type}-12`}
-                                onClick={e => setAfternoonSnack("finished")}
+                                onClick={e => setAfternoonSnack(e.target.value)}
                             />
                             </div>
                         ))}

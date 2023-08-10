@@ -5,6 +5,7 @@ function NewStudent() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [birthday, setBirthday] = useState('');
+    const [gender, setGender] = useState('');
 
     const handleFirstName = (event) => {
         setFirstName(event.target.value);
@@ -23,7 +24,8 @@ function NewStudent() {
         // Here you can add your login logic, such as calling an API to validate the credentials
         console.log('firstName:', firstName);
         console.log('lastName:', lastName);
-        console.log('birthday:', birthday)
+        console.log('birthday:', birthday);
+        console.log('gender:', gender);
       };  
 
     return (
@@ -68,7 +70,8 @@ function NewStudent() {
                     name="genderRadios" 
                     value="boy" 
                     className="m-2" 
-                    id="gender-b" 
+                    id="gender-b"
+                    onClick={e => setGender(e.target.value)}
                 />
                 <label htmlFor="gender-f" className="form-label h5">Girl</label>
                 <input type="radio" 
@@ -76,6 +79,7 @@ function NewStudent() {
                     value="girl" 
                     className="m-2" 
                     id="gender-f" 
+                    onClick={e => setGender(e.target.value)}
                 />
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
