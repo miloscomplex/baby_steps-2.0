@@ -1,6 +1,21 @@
 import Form from 'react-bootstrap/Form';
+import React, { useState } from 'react';
 
 function DailyLog() {
+
+    const [breakfast, setBreakfast] = useState('');
+    const [morningSnack, setMorningSnack] = useState('');
+    const [lunch, setLunch] = useState('');
+    const [afternoonSnack, setAfternoonSnack] = useState('');
+
+    const handleClick = (e) => {
+        console.log(e)
+        console.log("breakfast:", breakfast);
+        console.log("morningSnack:", morningSnack);
+        console.log("lunch:", lunch);
+        console.log("afternoonSnack:", afternoonSnack);
+
+    }
     return (
       <div className="container p-4">
         <div className="card p-3 mb-2">
@@ -22,6 +37,7 @@ function DailyLog() {
                                 name="breakfast"
                                 type={type}
                                 id={`inline-${type}-1`}
+                                onClick={e => setBreakfast("none")}
                             />
                             <Form.Check
                                 inline
@@ -29,13 +45,15 @@ function DailyLog() {
                                 name="breakfast"
                                 type={type}
                                 id={`inline-${type}-2`}
+                                onClick={e => setBreakfast("ate some")}
                             />
                             <Form.Check
                                 inline
                                 label="finished"
-                                name="afternoonSnack"
+                                name="breakfast"
                                 type={type}
                                 id={`inline-${type}-3`}
+                                onClick={e => setBreakfast("finished")}
                             />
                             </div>
                         ))}
@@ -52,6 +70,7 @@ function DailyLog() {
                                 name="morningSnack"
                                 type={type}
                                 id={`inline-${type}-4`}
+                                onClick={e => setMorningSnack("none")}
                             />
                             <Form.Check
                                 inline
@@ -59,6 +78,7 @@ function DailyLog() {
                                 name="morningSnack"
                                 type={type}
                                 id={`inline-${type}-5`}
+                                onClick={e => setMorningSnack("ate some")}
                             />
                             <Form.Check
                                 inline
@@ -66,6 +86,7 @@ function DailyLog() {
                                 name="morningSnack"
                                 type={type}
                                 id={`inline-${type}-6`}
+                                onClick={e => setMorningSnack("finished")}
                             />
                             </div>
                         ))}
@@ -82,6 +103,7 @@ function DailyLog() {
                                 name="lunch"
                                 type={type}
                                 id={`inline-${type}-7`}
+                                onClick={e => setLunch("none")}
                             />
                             <Form.Check
                                 inline
@@ -89,6 +111,7 @@ function DailyLog() {
                                 name="lunch"
                                 type={type}
                                 id={`inline-${type}-8`}
+                                onClick={e => setLunch("ate some")}
                             />
                             <Form.Check
                                 inline
@@ -96,6 +119,7 @@ function DailyLog() {
                                 name="lunch"
                                 type={type}
                                 id={`inline-${type}-9`}
+                                onClick={e => setLunch("finished")}
                             />
                             </div>
                         ))}
@@ -112,6 +136,7 @@ function DailyLog() {
                                 name="afternoonSnack"
                                 type={type}
                                 id={`inline-${type}-10`}
+                                onClick={e => setAfternoonSnack("none")}
                             />
                             <Form.Check
                                 inline
@@ -119,6 +144,7 @@ function DailyLog() {
                                 name="afternoonSnack"
                                 type={type}
                                 id={`inline-${type}-11`}
+                                onClick={e => setAfternoonSnack("ate some")}
                             />
                             <Form.Check
                                 inline
@@ -126,6 +152,7 @@ function DailyLog() {
                                 name="afternoonSnack"
                                 type={type}
                                 id={`inline-${type}-12`}
+                                onClick={e => setAfternoonSnack("finished")}
                             />
                             </div>
                         ))}
@@ -134,7 +161,7 @@ function DailyLog() {
                     <label htmlFor="time">Depature</label>
                     <input type="time" className="form-control" id="timeDeparture"></input>
 
-                    <button href="#" className="btn mt-4 btn-secondary">Commit Changes</button>
+                    <button href="#" onClick={e => handleClick(e)} className="btn mt-4 btn-secondary">Commit Changes</button>
                 </fieldset>
             </div>
         </div>
