@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function DailyLog() {
 
@@ -9,6 +9,10 @@ function DailyLog() {
     const [morningSnack, setMorningSnack] = useState('');
     const [lunch, setLunch] = useState('');
     const [afternoonSnack, setAfternoonSnack] = useState('');
+    const [data, setData] = useState('');
+    const {id} = useParams();
+
+    // console.log("id:", {id});
 
     const navigate = useNavigate();
 
@@ -19,6 +23,17 @@ function DailyLog() {
         console.log("afternoonSnack:", afternoonSnack);
 
     }
+
+    // Effect to fetch data when the component mounts
+    useEffect(() => {
+        const apiUrl =`http://127.0.0.1:3000/students/${id}`;
+    
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => console.log(data)) // Update the state with fetched data
+            .catch(error => console.error('Error fetching data:', error));
+    }, []); // Empty dependency array means this effect runs only once on mount
+    
     return (
       <div className="container p-4">
         <a onClick={e => navigate('/home')} className='nav-link my-2'>back to students</a>
