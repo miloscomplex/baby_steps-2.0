@@ -37,7 +37,7 @@ function NewStudent() {
             const response = await fetch(`${API}students`, {
                 method: 'POST',
                 headers: HEADERS,
-                body: JSON.stringify({firstname, lastname, user_id})
+                body: JSON.stringify({firstname, lastname, user_id, birthdate, gender})
             });
 
             if (response.ok) {

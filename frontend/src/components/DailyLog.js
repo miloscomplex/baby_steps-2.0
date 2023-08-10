@@ -1,5 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function DailyLog() {
 
@@ -8,6 +9,8 @@ function DailyLog() {
     const [morningSnack, setMorningSnack] = useState('');
     const [lunch, setLunch] = useState('');
     const [afternoonSnack, setAfternoonSnack] = useState('');
+
+    const navigate = useNavigate();
 
     const handleClick = (e) => {
         console.log("breakfast:", breakfast);
@@ -18,6 +21,7 @@ function DailyLog() {
     }
     return (
       <div className="container p-4">
+        <a onClick={e => navigate('/home')} className='nav-link my-2'>back to students</a>
         <div className="card p-3 mb-2">
             <div className="card-body">
                 <img src="/images/baby_face-1.jpg" className="student-img mb-3" />
