@@ -25,25 +25,34 @@ function NewStudent() {
         setBirthdate(event.target.value)
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         // console.log('firstName:', firstname);
         // console.log('lastName:', lastname);
         // console.log('birthdate:', birthdate);
         // console.log('gender:', gender);
         console.log(JSON.stringify({firstname, lastname, birthdate, gender, user_id}));
+        // use of async function to avoid loading home without new student
+        try {
+            const response = await fetch(`${API}students`, {
+                method: 'POST',
+                headers: HEADERS,
+                body: JSON.stringify({firstname, lastname, user_id})
+            });
 
-        fetch(`${API}students`, {
-            method: 'POST',
-            headers: HEADERS,
-            body: JSON.stringify({firstname, lastname, user_id})
-        });
-        setFirstName('')
-        setLastName('')
-        setBirthdate('')
-        setGender('')
-
-        navigate('/home');
+            if (response.ok) {
+                setFirstName('')
+                setLastName('')
+                setBirthdate('')
+                setGender('')
+                navigate('/home')
+            } else {
+                console.error('response not ok')
+            }
+        } catch (error) {
+            console.error('errror sending data', error)
+        }
+        
       };  
 
     return (
