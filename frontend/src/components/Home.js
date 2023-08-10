@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
 
     const handleClick = (event) => {
         event.preventDefault();
         console.log('Add a student was clicked');
+        navigate('/students/new');
     };
 
+    const navigate = useNavigate();
     const [data, setData] = useState([]);
 
     // Effect to fetch data when the component mounts
