@@ -37,7 +37,7 @@ function Home() {
                     <img src={student.img_url} className="student-img mb-3" />
                     
                     <h4>{student.firstname} {student.lastname}</h4>
-                    <p className="card-text">Arrival time {student.arrival.split('T')[1].split(':00')[0]}</p>
+                    <p className="card-text">Arrival time: { student.arrival ? student.arrival.split('T')[1].split(':00')[0] : 'n/a'}</p>
                     <a href={`students/${student.id}/dailylog`} className="btn btn-secondary">Daily Log</a>
                     <p className="mt-3">
                         <a href={`students/${student.id}/dailylog`}>Update profile</a>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { API, HEADERS } from '../constants/index'
+import { API, HEADERS } from '../constants/index';
+import { useNavigate } from 'react-router-dom';
+
 
 function NewStudent() {
 
@@ -8,6 +10,8 @@ function NewStudent() {
     const [birthdate, setBirthdate] = useState('');
     const [gender, setGender] = useState('');
     const [user_id, setUserId] = useState('1');
+
+    const navigate = useNavigate();
 
     const handleFirstName = (event) => {
         setFirstName(event.target.value);
@@ -23,11 +27,10 @@ function NewStudent() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Here you can add your login logic, such as calling an API to validate the credentials
-        console.log('firstName:', firstname);
-        console.log('lastName:', lastname);
-        console.log('birthdate:', birthdate);
-        console.log('gender:', gender);
+        // console.log('firstName:', firstname);
+        // console.log('lastName:', lastname);
+        // console.log('birthdate:', birthdate);
+        // console.log('gender:', gender);
         console.log(JSON.stringify({firstname, lastname, birthdate, gender, user_id}));
 
         fetch(`${API}students`, {
@@ -40,6 +43,7 @@ function NewStudent() {
         setBirthdate('')
         setGender('')
 
+        navigate('/home');
       };  
 
     return (
