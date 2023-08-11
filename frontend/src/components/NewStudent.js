@@ -57,6 +57,7 @@ function NewStudent() {
 
     return (
       <div className="container">
+        <a onClick={e => navigate('/home')} className='nav-link my-2'>back to students</a>
         <h1 className="my-4">Please complete the forms below to enter the new child.</h1>
         <form onSubmit={handleSubmit}>
             <div className="row mb-3">

@@ -53,7 +53,7 @@ function DailyLog() {
         <a onClick={e => navigate('/home')} className='nav-link my-2'>back to students</a>
         <div className="card p-3 mb-2">
             <div className="card-body">
-                <img src="/images/baby_face-1.jpg" className="student-img mb-3" />
+                <img src={student.img_url} className="student-img mb-3" />
                 <h1>{student.firstname} {student.lastname}</h1>
                 <fieldset>
                     <label htmlFor="time">Arrival</label>
