@@ -47,7 +47,13 @@ function Signin() {
           />
       </div>
       <button type="submit" onClick={e => handleLogin(e)} className="btn btn-primary">Submit</button>
+
+      <p>
+        <a onClick={e => navigate('/signup')} className='nav-link my-2'>Sign Up Here</a>
+      </p>
+
   </form>
+    
     </div>
   );
 }

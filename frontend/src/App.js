@@ -6,6 +6,7 @@ import ProtectedRoutes from './components/ProtectedRoutes';
 import Home from './components/Home';
 import DailyLog from './components/DailyLog';
 import NewStudent from './components/NewStudent';
+import Signup from './components/Signup';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup /> } />
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/home" element={<Home />} />
