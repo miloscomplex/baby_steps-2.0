@@ -12,7 +12,7 @@ function Signup() {
   const handleLogin = (e) => {
     e.preventDefault();
     // handle new signup
-    
+
   };
 
   return (
@@ -44,7 +44,11 @@ function Signup() {
       </div>
       <button type="submit" onClick={e => handleLogin(e)} className="btn btn-primary">Submit</button>
   </form>
-    </div>
+
+  <p>
+    <a onClick={e => navigate('/login')} className='nav-link my-2'>Login</a>
+  </p>
+  </div>
   );
 }
 
