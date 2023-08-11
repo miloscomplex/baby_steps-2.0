@@ -9,7 +9,7 @@ function DailyLog() {
     const [morningSnack, setMorningSnack] = useState('');
     const [lunch, setLunch] = useState('');
     const [afternoonSnack, setAfternoonSnack] = useState('');
-    const [data, setData] = useState('');
+    const [student, setStudent] = useState('');
     const {id} = useParams();
 
     const navigate = useNavigate();
@@ -28,7 +28,7 @@ function DailyLog() {
     
         fetch(apiUrl)
             .then(response => response.json())
-            .then(data => setData(data)) // Update the state with fetched data
+            .then(data => setStudent(data)) // Update the state with fetched data
             .catch(error => console.error('Error fetching data:', error));
     }, []); // Empty dependency array means this effect runs only once on mount
 
@@ -54,24 +54,25 @@ function DailyLog() {
         <div className="card p-3 mb-2">
             <div className="card-body">
                 <img src="/images/baby_face-1.jpg" className="student-img mb-3" />
-                <h1>{data.firstname} {data.lastname}</h1>
+                <h1>{student.firstname} {student.lastname}</h1>
                 <fieldset>
                     <label htmlFor="time">Arrival</label>
                     <input type="time" className="form-control" id="time"></input>
                     <h3 className="mt-3 h2">Meals</h3>
                     <Form className='mt-4'>
-                        {["Breakfast","Morning snack","Lunch","Afternoon snack"].map((meal) => (
-                            <div>
+                        {["Breakfast","Morning snack","Lunch","Afternoon snack"].map((meal, index) => (
+                            <div key={index}>
                                     <label className="h5" htmlFor={meal}>{meal}</label>
-                                    <div key={`inline-radio-1`} className="mb-3">
-                                    {["none","ate some","finished"].map((arr) => (
+                                    <div key={index} className="mb-3">
+                                    {["none","ate some","finished"].map((arr, index2) => (
                                         <Form.Check
                                             inline
                                             label={arr}
                                             name={meal}
                                             value={arr}
                                             type="radio"
-                                            id={`inline-radio`}
+                                            id={`inline-radio-${index}-${index2}`}
+                                            key={`inline-radio-${index}-${index2}`}
                                             onClick={e => setMeal(meal, e.target.value)}
                                         />
                                     ))}
