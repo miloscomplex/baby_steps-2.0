@@ -5,7 +5,6 @@ function Home() {
 
     const handleClick = (event) => {
         event.preventDefault();
-        console.log('Add a student was clicked');
         navigate('/students/new');
     };
 

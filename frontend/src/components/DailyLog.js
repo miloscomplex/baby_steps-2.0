@@ -31,6 +31,22 @@ function DailyLog() {
             .then(data => setData(data)) // Update the state with fetched data
             .catch(error => console.error('Error fetching data:', error));
     }, []); // Empty dependency array means this effect runs only once on mount
+
+    const setMeal = (meal, progress) => {
+        switch (meal) {
+            case "Breakfast":
+                setBreakfast(progress)
+                break 
+            case "Morning snack":
+                setMorningSnack(progress)
+                break
+            case "Lunch":
+                setLunch(progress)
+                break 
+            case "Afternoon snack":
+                setAfternoonSnack(progress)
+        }
+    }
     
     return (
       <div className="container p-4">
@@ -44,11 +60,11 @@ function DailyLog() {
                     <input type="time" className="form-control" id="time"></input>
                     <h3 className="mt-3 h2">Meals</h3>
                     <Form className='mt-4'>
-                        {["Breakfast","Morning sanck","Lunch","Afternoon snack"].map((meal) => (
+                        {["Breakfast","Morning snack","Lunch","Afternoon snack"].map((meal) => (
                             <div>
                                     <label className="h5" htmlFor={meal}>{meal}</label>
                                     <div key={`inline-radio-1`} className="mb-3">
-                                    {["none","ate-some","finished"].map((arr) => (
+                                    {["none","ate some","finished"].map((arr) => (
                                         <Form.Check
                                             inline
                                             label={arr}
@@ -56,7 +72,7 @@ function DailyLog() {
                                             value={arr}
                                             type="radio"
                                             id={`inline-radio`}
-                                            // onClick={e => setBreakfast(e.target.value)}
+                                            onClick={e => setMeal(meal, e.target.value)}
                                         />
                                     ))}
                                     </div>
